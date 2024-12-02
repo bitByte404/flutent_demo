@@ -30,15 +30,21 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return NavigationView(
-      // appBar: const NavigationAppBar(title: Text('Fluent UI Demo')),
+      appBar: const NavigationAppBar(title: Text('Fluent UI Demo')),
       pane: NavigationPane(
+        footerItems: [
+          PaneItem(
+              icon: Icon(FluentIcons.home),
+              body: HomeBody(),
+              title: Text('推荐')),
+        ],
+        // displayMode: PaneDisplayMode.top,
+        header: const Text('猜你喜欢'),
           selected: selectedNum,
           onChanged: (i) {
             selectedNum = i;
             setState(() {});
           },
-          // displayMode: PaneDisplayMode.compact,
-          // displayMode: PaneDisplayMode.auto,
           items: [
             PaneItem(
                 icon: Icon(FluentIcons.home),
@@ -48,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: Icon(FluentIcons.factory),
                 body: MusicBody(),
                 title: Text('乐馆')),
+            PaneItemSeparator(),
             PaneItem(
                 icon: Icon(FluentIcons.chat),
                 body: ChatBody(),
@@ -56,7 +63,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
-
-
